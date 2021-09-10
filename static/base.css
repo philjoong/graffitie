@@ -1,0 +1,18 @@
+.graffitie_footer_logo {
+    font-family: 'Bebas Neue', cursive;
+}
+.graffitie_footer_button{
+    sfont-size: .6rem;
+}
+
+.graffitie_footer{
+    text-align: center; margin-top: 2rem;
+}
+
+.graffitie_header_logo{
+    font-family: 'Bebas Neue', cursive;
+}
+
+.graffitie_header{
+    text-align: center; margin: 2rem;
+}
