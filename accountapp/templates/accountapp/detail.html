@@ -1,14 +1,30 @@
 {% extends 'base.html' %}
+{% load bootstrap5 %}
 
 {% block content %}
 
-<div style="text-align: center; max-width: 400px; margin: 4rem auto;">
-    <div>
-      <p>
-        {{ target_user.date_joined }}
-      </p>
-        <h2>{{ target_user.username }}</h2>
-    </div>
+<div style="text-align: center; max-width: 400px; margin: 4rem auto">
+   <div>
+       <p>
+           {{ target_user.date_joined }}
+       </p>
+       <h3 style="font-family:'NanumSquareR'">
+           {{ target_user.username }}
+       </h3>
+       {% if target_user == user %}
+       <a href="{% url 'accountapp:update' pk=user.pk %}">
+           <p>
+               Change Password
+           </p>
+       </a>
+       <a href="{% url 'accountapp:delete' pk=user.pk %}">
+           <p>
+               Delete ID
+           </p>
+       </a>
+
+       {% endif %}
+   </div>
 </div>
 
 {% endblock %}
