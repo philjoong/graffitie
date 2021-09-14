@@ -8,6 +8,9 @@
       <h1>
           {{ target_article.title }}
       </h1>
+       <h5>
+           {{ target_article.writer.profile.nickname }}
+       </h5>
        {% if target_article.image %}
        <img src="{{ target_article.image.url }}" alt="">
        {% endif %}
@@ -15,14 +18,16 @@
            {{ target_article.content }}
        </p>
    </div>
-    <div class="d-flex justify-content-between mt-3 mb -3">
-        <a href="{% url 'articleapp:update' pk=target_article.pk %}" class="btn btn-dark rounded-pill col-3 mt-3 mb -3">
-            Update Article
+    {% if target_article.writer == user %}
+    <div class="d-flex justify-content-center mt-3 mb -3">
+        <a href="{% url 'articleapp:update' pk=target_article.pk %}" class="btn btn-primary rounded-pill col-3 mt-3 mb -3">
+            Update
         </a>
-        <a href="{% url 'articleapp:delete' pk=target_article.pk %}" class="btn btn-dark rounded-pill col-3 mt-3 mb -3">
-            Delete Article
+        <a href="{% url 'articleapp:delete' pk=target_article.pk %}" class="btn btn-danger rounded-pill col-3 mt-3 mb -3">
+            Delete
         </a>
     </div>
+    {% endif %}
 
 
 
