@@ -16,3 +16,9 @@
 .graffitie_header{
     text-align: center; margin: 2rem;
 }
+
+@mdia screen and (max-width:  500px){
+    html {
+        font-size: 13px
+    }
+}
