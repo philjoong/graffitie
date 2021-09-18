@@ -2,20 +2,19 @@
 
 {% block content %}
 
-<div style="text-align: center; max-width: 400px; margin: 4rem auto">
+<div style="text-align: center; margin: 4rem auto; max-width: 400px">
    <form action="{% url 'commentapp:create' %}" method="post">
        {% csrf_token %}
 <!--       {{ form }}-->
-       {% bootstrap_form form %}
        {% if user.is_authenticated %}
-       <input type="submit" class="btn btn-dark rounded-pill col-6 mt-3">
+       {% bootstrap_form form %}
+
+       <input type="submit" class="btn btn-dark rounded-pill col-3 mt-3" value="submit">
        {% else %}
        <a href="{% url 'accountapp:login' %}?next={{ request.path }}" class="btn btn-dark rounded-pill col-6 mt-3">
            Login
        </a>
-
        {% endif %}
-
        <input type="hidden" name="article_pk" value="{{ article.pk }}">
    </form>
 </div>
