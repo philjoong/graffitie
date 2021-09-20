@@ -11,28 +11,13 @@ from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 
 from accountapp.decorator import account_ownership_required
 from accountapp.forms import AccountUpdateForm
-from accountapp.models import HelloWorld
 
 has_ownership = [account_ownership_required,login_required]
-
-def hello_world(request):
-    if request.method == "POST":
-        temp = request.POST.get("login_id")
-        new_HelloWorld = HelloWorld()
-        new_HelloWorld.text = temp
-        new_HelloWorld.save()
-
-        hello_world_list = HelloWorld.objects.all
-        return HttpResponseRedirect(reverse('accountapp:hello_world'))
-    else:
-        hello_world_list = HelloWorld.objects.all
-        return render(request, 'accountapp/content.html', context={'hello_world_list': hello_world_list})
-
 
 class AccountCreateView(CreateView):
     model = User
     form_class = UserCreationForm
-    success_url = reverse_lazy('accountapp:hello_world')
+    success_url = reverse_lazy('home')
     template_name = 'accountapp/create.html'
 
 
@@ -51,7 +36,7 @@ class AccountUpdateView(UpdateView):
     model = User
     form_class = AccountUpdateForm
     context_object_name = 'target_user'
-    success_url = reverse_lazy('accountapp:hello_world')
+    success_url = reverse_lazy('home')
     template_name = 'accountapp/update.html'
 
 @method_decorator(has_ownership, 'get')
