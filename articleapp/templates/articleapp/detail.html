@@ -15,9 +15,9 @@
                 {% if target_article.image %}
                 <img src="{{ target_article.image.url }}" alt="">
                 {% endif %}
-            <p>
-                {{ target_article.content }}
-            </p>
+            <div>
+                {{ target_article.content | safe }}
+            </div>
         </div>
     </div>
     {% if target_article.writer == user %}
