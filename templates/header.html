@@ -6,8 +6,9 @@
         <a href="{% url 'articleapp:list' %}" class="graffitie_header_nav">
             <span>Articles</span>
         </a>
-        <span>nav2</span>
-        <span>nav3</span>
+        <a href="{% url 'subscribeapp:list' %}" class="graffitie_header_nav">
+            <span>Subscribe</span>
+        </a>
         {% if not user.is_authenticated %}
         <a href="{% url 'accountapp:login' %}?next={{ request.path }}" class="graffitie_header_nav">
             <span>login</span>
